@@ -134,45 +134,39 @@
 #     }
 #
 class curator (
-  $ensure           = $::curator::params::ensure,
-  $package_name     = $::curator::params::package_name,
-  $package_provider = $::curator::params::package_provider,
-  $manage_repo      = $::curator::params::manage_repo,
-  $repo_version     = $::curator::params::repo_version,
+  $ensure                        = $::curator::params::ensure,
+  $package_name                  = $::curator::params::package_name,
+  $package_provider              = $::curator::params::package_provider,
+  Bool $manage_repo              = $::curator::params::manage_repo,
+  Optional[String] $repo_version = $::curator::params::repo_version,
 
-  $install_only     = $::curator::params::install_only,
+  $install_only                  = $::curator::params::install_only,
   # curator params
-  $config_file      = $::curator::params::config_file,
-  $actions_file     = $::curator::params::actions_file,
-  $hosts            = $::curator::params::hosts,
-  $port             = $::curator::params::port,
-  $url_prefix       = $::curator::params::url_prefix,
-  $use_ssl          = $::curator::params::use_ssl,
-  $certificate      = $::curator::params::certificate,
-  $client_cert      = $::curator::params::client_cert,
-  $client_key       = $::curator::params::client_key,
-  $aws_key          = $::curator::params::aws_key,
-  $aws_secret_key   = $::curator::params::aws_secret_key,
-  $aws_region       = $::curator::params::aws_region,
-  $ssl_no_validate  = $::curator::params::ssl_no_validate,
-  $http_auth        = $::curator::params::http_auth,
-  $timeout          = $::curator::params::timeout,
-  $master_only      = $::curator::params::master_only,
-  $log_level        = $::curator::params::log_level,
-  $logfile          = $::curator::params::logfile,
-  $logformat        = $::curator::params::logformat,
-  $blacklist        = $::curator::params::blacklist,
+  $config_file                   = $::curator::params::config_file,
+  $actions_file                  = $::curator::params::actions_file,
+  $hosts                         = $::curator::params::hosts,
+  $port                          = $::curator::params::port,
+  $url_prefix                    = $::curator::params::url_prefix,
+  $use_ssl                       = $::curator::params::use_ssl,
+  $certificate                   = $::curator::params::certificate,
+  $client_cert                   = $::curator::params::client_cert,
+  $client_key                    = $::curator::params::client_key,
+  $aws_key                       = $::curator::params::aws_key,
+  $aws_secret_key                = $::curator::params::aws_secret_key,
+  $aws_region                    = $::curator::params::aws_region,
+  $ssl_no_validate               = $::curator::params::ssl_no_validate,
+  $http_auth                     = $::curator::params::http_auth,
+  $timeout                       = $::curator::params::timeout,
+  $master_only                   = $::curator::params::master_only,
+  $log_level                     = $::curator::params::log_level,
+  $logfile                       = $::curator::params::logfile,
+  $logformat                     = $::curator::params::logformat,
+  $blacklist                     = $::curator::params::blacklist,
 ) inherits curator::params {
   if ($ensure != 'latest' or $ensure != 'absent') {
     if versioncmp($ensure, '4.0.0') < 0 {
       fail('This version of the module only supports version 4.0.0 or later of curator')
     }
-  }
-
-  validate_bool($manage_repo)
-
-  if $repo_version {
-    validate_string($repo_version)
   }
 
   contain '::curator::install'

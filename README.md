@@ -1,5 +1,4 @@
-[![Puppet Forge](http://img.shields.io/puppetforge/v/jlambert121/curator.svg)](https://forge.puppetlabs.com/jlambert121/curator)
-[![Build Status](https://travis-ci.org/jlambert121/jlambert121-curator.png?branch=master)](https://travis-ci.org/jlambert121/jlambert121-curator)
+# puppet-curator (Forked from https://github.com/ccin2p3/puppet-curator)
 
 #### Table of Contents
 
