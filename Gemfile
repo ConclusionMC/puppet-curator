@@ -1,37 +1,45 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'puppet', ENV.key?('PUPPET_VERSION') ? "~> #{ENV['PUPPET_VERSION']}" : '>= 2.7'
+group :test do
+  gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
+  gem 'jsonlint'
 
-gem 'rake'
-gem 'rspec', '~> 3.0'
-gem 'rspec-puppet', '~> 2.3'
-gem 'rspec-puppet-facts', '>= 1.7'
-gem 'puppetlabs_spec_helper', '>= 0.8.0'
-gem 'puppet-lint'
-gem 'puppet-lint-absolute_classname-check'
-gem 'puppet-lint-absolute_template_path'
-gem 'puppet-lint-appends-check'
-gem 'puppet-lint-classes_and_types_beginning_with_digits-check'
-gem 'puppet-lint-empty_string-check'
-gem 'puppet-lint-file_ensure-check'
-gem 'puppet-lint-leading_zero-check'
-gem 'puppet-lint-numericvariable'
-gem 'puppet-lint-param-docs', '>= 1.3.0'
-gem 'puppet-lint-resource_reference_syntax'
-gem 'puppet-lint-spaceship_operator_without_tag-check'
-gem 'puppet-lint-strict_indent-check'
-gem 'puppet-lint-trailing_comma-check'
-gem 'puppet-lint-undef_in_function-check'
-gem 'puppet-lint-unquoted_string-check'
-gem 'puppet-lint-usascii_format-check'
-gem 'puppet-lint-variable_contains_upcase'
-gem 'puppet-lint-version_comparison-check'
-gem 'simplecov'
-gem 'puppet-blacksmith', '>= 3.1.0', {"groups"=>["development"]}
-gem 'json', '~> 1.0', {"platforms"=>["ruby_19"], "groups"=>["test"]}
-gem 'json_pure', '~> 1.0', {"platforms"=>["ruby_19"], "groups"=>["test"]}
-gem 'metadata-json-lint'
-gem 'webmock', '< 2.0'
-gem 'addressable', '< 2.4', {"platforms"=>["ruby_18"]}
-gem 'oauth'
-gem 'parallel_tests', {"platforms"=>["ruby_20", "ruby_21"]}
+  gem 'metadata-json-lint'
+
+  gem 'openssl'
+
+  gem 'puppet', '~> 4.10.0'
+  gem 'puppet-lint'
+  gem 'puppet-lint-absolute_classname-check'
+  gem 'puppet-lint-classes_and_types_beginning_with_digits-check'
+  gem 'puppet-lint-leading_zero-check'
+  gem 'puppet-lint-resource_reference_syntax'
+  gem 'puppet-lint-trailing_comma-check'
+  gem 'puppet-lint-unquoted_string-check'
+  gem 'puppet-lint-version_comparison-check'
+  gem 'puppet-syntax'
+
+  gem 'puppetlabs_spec_helper'
+
+  gem 'rake'
+  gem 'rspec'
+  gem 'rspec-puppet'
+  gem 'rspec-puppet-facts'
+  gem 'rubocop', '0.54.0'
+
+  gem 'semantic_puppet'
+  gem 'simplecov', '0.17.1'
+  gem 'simplecov-console'
+end
+
+group :development do
+  gem 'git'
+
+  gem 'puppet-blacksmith', '4.1.2'
+  gem 'puppet-strings'
+
+  gem 'redcarpet'
+end
+
+group :system_tests do
+end
