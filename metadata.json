@@ -1,6 +1,6 @@
 {
   "name": "cmc-curator",
-  "version": "3.5.2",
+  "version": "3.5.3",
   "author": "Conclusion Mission Critical",
   "license": "Apache-2.0",
   "summary": "Installs elasticsearch curator",
