@@ -137,7 +137,7 @@ class curator (
   $ensure                        = $::curator::params::ensure,
   $package_name                  = $::curator::params::package_name,
   $package_provider              = $::curator::params::package_provider,
-  Bool $manage_repo              = $::curator::params::manage_repo,
+  Boolean $manage_repo           = $::curator::params::manage_repo,
   Optional[String] $repo_version = $::curator::params::repo_version,
 
   $install_only                  = $::curator::params::install_only,
@@ -174,7 +174,7 @@ class curator (
   if !$install_only {
     contain '::curator::config'
 
-    Class['curator::install'] ->
-    Class['curator::config']
+    Class['curator::install']
+    -> Class['curator::config']
   }
 }

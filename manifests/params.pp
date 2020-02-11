@@ -7,7 +7,7 @@ class curator::params {
   $package_name     = 'elasticsearch-curator'
   $package_provider = undef
   $manage_repo      = false
-  $repo_version     = false
+  $repo_version     = undef
   $install_only     = false
 
   $config_file     = '/root/.curator/curator.yml'
